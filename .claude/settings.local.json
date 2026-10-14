@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//C/ti/c2000/C2000Ware_26_02_00_00/**)",
+      "Read(//C/ti/C2000Ware_26_01_00_00/**)",
+      "Read(//C/ti/ccs2101/ccs/utils/sysconfig_1.28.1/**)",
+      "mcp__ccs-debug",
+      "mcp__ccs-project",
+      "mcp__ccs-sysconfig",
+      "mcp__ccs-serial",
+      "Read(//C/ti/ccs2101/ccs/theia/resources/ai/**)"
+    ],
+    "ask": [
+      "mcp__ccs-project__changeSysConfigVersion"
+    ]
+  },
+  "env": {
+    "CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS": "1"
+  }
+}

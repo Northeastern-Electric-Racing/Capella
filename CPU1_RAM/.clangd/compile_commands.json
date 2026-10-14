@@ -1,0 +1,17 @@
+[
+   {
+      "directory" : "C:/Users/ethanmarkow/repos/Capella/CPU1_RAM",
+      "command"   : "clang++ -I\"C:/Users/ethanmarkow/repos/Capella\" -I\"C:/Users/ethanmarkow/repos/Capella/device\" -I\"C:/ti/C2000Ware_26_01_00_00/driverlib/f2838x/driverlib/\" -I\"C:/ti/ccs2101/ccs/tools/compiler/ti-cgt-c2000_25.11.1.LTS/include\" -DDEBUG -DCPU1 -I\"C:/Users/ethanmarkow/repos/Capella/CPU1_RAM/syscfg\" -xc",
+      "file"      : "C:/Users/ethanmarkow/repos/Capella/device/device.c"
+   },
+   {
+      "directory" : "C:/Users/ethanmarkow/repos/Capella/CPU1_RAM",
+      "command"   : "clang++ -I\"C:/Users/ethanmarkow/repos/Capella\" -I\"C:/Users/ethanmarkow/repos/Capella/device\" -I\"C:/ti/C2000Ware_26_01_00_00/driverlib/f2838x/driverlib/\" -I\"C:/ti/ccs2101/ccs/tools/compiler/ti-cgt-c2000_25.11.1.LTS/include\" -DDEBUG -DCPU1 -I\"C:/Users/ethanmarkow/repos/Capella/CPU1_RAM/syscfg\"",
+      "file"      : "C:/Users/ethanmarkow/repos/Capella/device/f2838x_codestartbranch.asm"
+   },
+   {
+      "directory" : "C:/Users/ethanmarkow/repos/Capella/CPU1_RAM",
+      "command"   : "clang++ -I\"C:/Users/ethanmarkow/repos/Capella\" -I\"C:/Users/ethanmarkow/repos/Capella/device\" -I\"C:/ti/C2000Ware_26_01_00_00/driverlib/f2838x/driverlib/\" -I\"C:/ti/ccs2101/ccs/tools/compiler/ti-cgt-c2000_25.11.1.LTS/include\" -DDEBUG -DCPU1 -I\"C:/Users/ethanmarkow/repos/Capella/CPU1_RAM/syscfg\" -xc",
+      "file"      : "C:/Users/ethanmarkow/repos/Capella/empty_sysconfig_main.c"
+   }
+]
