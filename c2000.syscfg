@@ -9,3 +9,150 @@
  * @v2CliArgs --device "TMS320F28386D" --package "337bga" --context "CPU1" --product "C2000WARE@26.01.00.00"
  * @versions {"tool":"1.28.1+4785"}
  */
+
+/**
+ * Import the modules used in this configuration.
+ */
+const adc              = scripting.addModule("/driverlib/adc.js", {}, false);
+const adc1             = adc.addInstance();
+const epwm             = scripting.addModule("/driverlib/epwm.js", {}, false);
+const epwm1            = epwm.addInstance();
+const epwm2            = epwm.addInstance();
+const epwm3            = epwm.addInstance();
+const epwm4            = epwm.addInstance();
+const epwmxbar         = scripting.addModule("/driverlib/epwmxbar.js", {}, false);
+const epwmxbar1        = epwmxbar.addInstance();
+const ethernet         = scripting.addModule("/driverlib/ethernet.js", {}, false);
+const ethernet1        = ethernet.addInstance();
+const flash            = scripting.addModule("/driverlib/flash.js", {}, false);
+const flash1           = flash.addInstance();
+const gpio             = scripting.addModule("/driverlib/gpio.js", {}, false);
+const gpio1            = gpio.addInstance();
+const gpio2            = gpio.addInstance();
+const gpio3            = gpio.addInstance();
+const gpio4            = gpio.addInstance();
+const gpio5            = gpio.addInstance();
+const gpio6            = gpio.addInstance();
+const gpio7            = gpio.addInstance();
+const gpio8            = gpio.addInstance();
+const gpio9            = gpio.addInstance();
+const inputxbar_input  = scripting.addModule("/driverlib/inputxbar_input.js", {}, false);
+const inputxbar_input1 = inputxbar_input.addInstance();
+const mcan             = scripting.addModule("/driverlib/mcan.js", {}, false);
+const mcan1            = mcan.addInstance();
+const sd               = scripting.addModule("/driverlib/sd.js", {}, false);
+const sd1              = sd.addInstance();
+const uart             = scripting.addModule("/driverlib/uart.js", {}, false);
+const uart1            = uart.addInstance();
+
+/**
+ * Write custom configuration values to the imported modules.
+ */
+adc1.$name       = "myADC0";
+adc1.soc0Name    = "Resolver_EXC";
+adc1.enabledSOCs = ["ADC_SOC_NUMBER0","ADC_SOC_NUMBER1","ADC_SOC_NUMBER2"];
+adc1.soc2Name    = "Resolver_SIN";
+adc1.soc1Name    = "Resolver_COS";
+
+epwm1.$name = "PhaseAPWM";
+
+epwm2.$name = "PhaseBPWM";
+
+epwm3.$name = "PhaseCPWM";
+
+epwm4.$name = "ResolverPWM";
+
+epwmxbar1.$name = "myEPWMXBAR0";
+
+ethernet1.$name            = "myETHERNET0";
+ethernet1.useCase          = "CUSTOM";
+ethernet1.useInterfacePins = ["ENET_MDIO_CLK","ENET_MDIO_DATA","ENET_REVMII_MDIO_RST","ENET_RMII_CLK","ENET_RMII_CRS_DV","ENET_RMII_RX_DATA0","ENET_RMII_RX_DATA1","ENET_RMII_RX_ER","ENET_RMII_TX_DATA0","ENET_RMII_TX_DATA1","ENET_RMII_TX_EN"];
+
+flash1.$name = "myFMC0";
+
+gpio1.$name = "GD1_CS";
+
+gpio2.$name = "GD2_CS";
+
+gpio3.$name = "GD3_CS";
+
+gpio4.$name = "GD4_CS";
+
+gpio5.$name = "GD5_CS";
+
+gpio6.$name = "GD6_CS";
+
+gpio7.$name = "GD_Ready";
+
+gpio8.$name          = "GD_Fault";
+gpio8.useInterrupt   = true;
+gpio8.xint.enableInt = true;
+
+gpio9.$name = "GD_Reset";
+
+inputxbar_input1.$name         = "myINPUTXBARINPUT0";
+gpio8.xint.inputxbar           = inputxbar_input1;
+inputxbar_input1.inputxbarGpio = "GPIO9";
+
+mcan1.$name = "myMCAN0";
+
+sd1.Use_FilterChannel_1 = true;
+sd1.Use_FilterChannel_2 = true;
+sd1.Use_FilterChannel_3 = true;
+sd1.Use_FilterChannel_4 = true;
+sd1.Ch2_SDCLKSEL        = "SDFM_CLK_SOURCE_SD1_CLK";
+sd1.Ch3_SDCLKSEL        = "SDFM_CLK_SOURCE_SD1_CLK";
+sd1.Ch4_SDCLKSEL        = "SDFM_CLK_SOURCE_SD1_CLK";
+sd1.$name               = "CurrentSenseSDFM";
+sd1.AE                  = ["FILTER1"];
+
+uart1.$name        = "myUART0";
+uart1.txQual.$name = "myGPIOQUAL0";
+uart1.rxQual.$name = "myGPIOQUAL1";
+
+/**
+ * Pinmux solution for unlocked pins/peripherals. This ensures that minor changes to the automatic solver in a future
+ * version of the tool will not impact the pinmux you originally saw.  These lines can be completely deleted in order to
+ * re-solve from scratch.
+ */
+epwm1.epwm.$suggestSolution                                 = "EPWM4";
+epwm1.epwm.epwm_aPin.$suggestSolution                       = "GPIO151";
+epwm1.epwm.epwm_bPin.$suggestSolution                       = "GPIO152";
+epwm2.epwm.$suggestSolution                                 = "EPWM3";
+epwm2.epwm.epwm_aPin.$suggestSolution                       = "GPIO149";
+epwm2.epwm.epwm_bPin.$suggestSolution                       = "GPIO150";
+epwm3.epwm.$suggestSolution                                 = "EPWM2";
+epwm3.epwm.epwm_aPin.$suggestSolution                       = "GPIO147";
+epwm3.epwm.epwm_bPin.$suggestSolution                       = "GPIO148";
+epwm4.epwm.$suggestSolution                                 = "EPWM1";
+epwm4.epwm.epwm_aPin.$suggestSolution                       = "GPIO0";
+epwm4.epwm.epwm_bPin.$suggestSolution                       = "GPIO1";
+ethernet1.ethernet.$suggestSolution                         = "ETHERNET";
+ethernet1.ethernet.enet_mdio_clkPin.$suggestSolution        = "GPIO105";
+ethernet1.ethernet.enet_mdio_dataPin.$suggestSolution       = "GPIO106";
+ethernet1.ethernet.enet_rmii_clkPin.$suggestSolution        = "GPIO73";
+ethernet1.ethernet.enet_revmii_mdio_rstPin.$suggestSolution = "GPIO107";
+gpio1.gpioPin.$suggestSolution                              = "GPIO2";
+gpio2.gpioPin.$suggestSolution                              = "GPIO3";
+gpio3.gpioPin.$suggestSolution                              = "GPIO4";
+gpio4.gpioPin.$suggestSolution                              = "GPIO5";
+gpio5.gpioPin.$suggestSolution                              = "GPIO6";
+gpio6.gpioPin.$suggestSolution                              = "GPIO7";
+gpio7.gpioPin.$suggestSolution                              = "GPIO8";
+gpio8.gpioPin.$suggestSolution                              = "GPIO9";
+gpio9.gpioPin.$suggestSolution                              = "GPIO11";
+mcan1.mcan.$suggestSolution                                 = "MCAN";
+mcan1.mcan.mcan_rxPin.$suggestSolution                      = "GPIO10";
+mcan1.mcan.mcan_txPin.$suggestSolution                      = "GPIO19";
+sd1.sd.$suggestSolution                                     = "SD1";
+sd1.sd.sd_c1Pin.$suggestSolution                            = "GPIO123";
+sd1.sd.sd_d1Pin.$suggestSolution                            = "GPIO122";
+sd1.sd.sd_c2Pin.$suggestSolution                            = "GPIO125";
+sd1.sd.sd_d2Pin.$suggestSolution                            = "GPIO124";
+sd1.sd.sd_c3Pin.$suggestSolution                            = "GPIO127";
+sd1.sd.sd_d3Pin.$suggestSolution                            = "GPIO126";
+sd1.sd.sd_c4Pin.$suggestSolution                            = "GPIO129";
+sd1.sd.sd_d4Pin.$suggestSolution                            = "GPIO128";
+uart1.uart.$suggestSolution                                 = "UARTA";
+uart1.uart.uart_txPin.$suggestSolution                      = "GPIO42";
+uart1.uart.uart_rxPin.$suggestSolution                      = "GPIO43";
